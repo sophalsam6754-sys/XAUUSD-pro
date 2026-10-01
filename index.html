@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Gold Trading Analyzer V3.1</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🥇 Gold Trading Analyzer</h1>
+    <div class="sub">XAU/USD • V3.1</div>
+  </div>
+  <button id="settingsBtn" class="ghost">⚙️</button>
+</header>
+
+<main>
+  <section class="panel controls">
+    <div class="row">
+      <label>Symbol
+        <select id="symbol"><option value="XAU/USD">XAU/USD</option></select>
+      </label>
+      <label>Timeframe
+        <select id="interval">
+          <option>1min</option><option selected>5min</option><option>15min</option>
+          <option>1h</option><option>4h</option><option>1day</option>
+        </select>
+      </label>
+      <button id="refresh">↻ Refresh</button>
+    </div>
+    <div class="status" id="status">Enter your Twelve Data API key in Settings.</div>
+  </section>
+
+  <section class="grid">
+    <div class="card"><span>Price</span><strong id="price">—</strong></div>
+    <div class="card"><span>Trend</span><strong id="trend">—</strong></div>
+    <div class="card"><span>RSI</span><strong id="rsi">—</strong></div>
+    <div class="card"><span>Signal</span><strong id="signal">WAIT</strong></div>
+  </section>
+
+  <section class="panel">
+    <div class="chartHead">
+      <div><b>XAU/USD</b> <span id="lastUpdate">—</span></div>
+      <div class="legend">EMA20 <i></i> EMA50 <i></i></div>
+    </div>
+    <div id="chart"></div>
+  </section>
+
+  <section class="grid two">
+    <div class="panel">
+      <h2>📌 Trade Plan</h2>
+      <div class="trade"><span>Entry</span><b id="entry">—</b></div>
+      <div class="trade"><span>Stop Loss</span><b id="sl">—</b></div>
+      <div class="trade"><span>TP1</span><b id="tp1">—</b></div>
+      <div class="trade"><span>TP2</span><b id="tp2">—</b></div>
+      <p class="note">Levels are calculated from ATR and the latest signal; they are not guaranteed outcomes.</p>
+    </div>
+    <div class="panel">
+      <h2>📊 Indicators</h2>
+      <div class="trade"><span>EMA 20</span><b id="ema20">—</b></div>
+      <div class="trade"><span>EMA 50</span><b id="ema50">—</b></div>
+      <div class="trade"><span>EMA 200</span><b id="ema200">—</b></div>
+      <div class="trade"><span>ATR 14</span><b id="atr">—</b></div>
+      <div class="trade"><span>MACD</span><b id="macd">—</b></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>🔔 Alerts</h2>
+    <div class="row">
+      <label class="switch"><input type="checkbox" id="sound" checked><span></span> Sound</label>
+      <label class="switch"><input type="checkbox" id="auto" checked><span></span> Auto refresh</label>
+      <span class="small">Every 60 seconds</span>
+    </div>
+  </section>
+
+  <section class="panel disclaimer">
+    <b>Risk notice:</b> This app provides technical-analysis calculations for informational purposes only. It does not guarantee profit and is not financial advice. Always verify prices, spreads and execution with your broker.
+  </section>
+</main>
+
+dialog id="settings">
+  <form method="dialog" class="modal">
+    <h2>⚙️ Settings</h2>
+    <label>Twelve Data API Key
+      <input id="apiKey" type="password" placeholder="Paste API key">
+    </label>
+    <p class="note">The key is stored only in this browser's local storage. For a public production app, use a server-side proxy so the key is not exposed.</p>
+    <div class="row right"><button value="cancel" class="ghost">Cancel</button><button id="saveKey" value="default">Save</button></div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
