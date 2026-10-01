@@ -1,1 +1,10 @@
-{"name":"Gold Trading Analyzer V3.1","short_name":"Gold V3.1","start_url":"./","display":"standalone","background_color":"#080d19","theme_color":"#0b1020","icons":[]}
+{
+  "name":"XAUUSD Pro V3.2",
+  "short_name":"XAUUSD Pro",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#070b12",
+  "theme_color":"#0b1220",
+  "description":"XAU/USD market analysis dashboard with technical indicators, signals, alerts and risk calculator.",
+  "icons":[]
+}
